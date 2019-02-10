@@ -4,29 +4,37 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 // TYPES
-const MAIN_SET_COUNTER = 'MAIN_SET_COUNTER'
+const SET_CHOSEN_CITY = 'SET_CHOSEN_CITY'
 
 // STATE
 const state = {
-  counter: 1
+  chosenCity: 'Leeds, UK'
 }
 
 // MUTATIONS
 const mutations = {
-  [MAIN_SET_COUNTER] (state, obj) {
-    state.counter = obj.counter
+  [SET_CHOSEN_CITY] (state, obj) {
+    state.chosenCity = obj
   }
 }
 
 // ACTIONS
 const actions = ({
-  setCounter ({ commit }, obj) {
-    commit(MAIN_SET_COUNTER, obj)
+  setChosenCity ({ commit }, obj) {
+    commit(SET_CHOSEN_CITY, obj)
+  }
+})
+
+// GETTERS
+const getters = ({
+  getChosenCity: (state) => {
+    return state.chosenCity
   }
 })
 
 export default new Vuex.Store({
   state,
+  getters,
   mutations,
   actions
 })
